@@ -9,7 +9,9 @@ const App = () => {
 
   const calcular = () => {
     const taxaJurosDecimal = parseInt(taxaJuros) / 100;
-    const parcela = valorInicial * taxaJurosDecimal * periodoMeses / (1 - (1 + taxaJuros) ** (-periodoMeses));
+    const auxiliar1 = ((1 + taxaJurosDecimal) ** periodoMeses) * taxaJurosDecimal;
+    const auxiliar2 = ((1 + taxaJurosDecimal) ** periodoMeses) - 1;
+    const parcela = ((valorInicial * auxiliar1) / auxiliar2).toFixed(2);
     setResultado(parcela);
   };
 
@@ -18,7 +20,7 @@ const App = () => {
       <Text style={styles.titulo}>Calculadora Financeira</Text>
       <TextInput
         style={styles.input}
-        placeholder="Valor inicial"
+        placeholder="Valor a ser financiado"
         onChangeText={(text) => setValorInicial(text)}
       />
       <TextInput
