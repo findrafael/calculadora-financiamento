@@ -21,16 +21,19 @@ const App = () => {
       <TextInput
         style={styles.input}
         placeholder="Valor a ser financiado"
+        keyboardType="numeric"
         onChangeText={(text) => setValorInicial(text)}
       />
       <TextInput
         style={styles.input}
         placeholder="Taxa de Juros x% a.m."
+        keyboardType="numeric"
         onChangeText={(text) => setTaxaJuros(text)}
       />
       <TextInput
         style={styles.input}
         placeholder="Período em meses"
+        keyboardType="numeric"
         onChangeText={(text) => setPeriodoMeses(text)}
       />
       <Button
@@ -38,7 +41,7 @@ const App = () => {
         onPress={calcular}
         style={styles.botao}
       />
-      <Text style={styles.resultado}>Os cálculos seriam de:</Text>
+      <Text style={styles.resultado}>O valor da sua parcela, será de:</Text>
       <Text style={styles.resultado}>{resultado}</Text>
     </View>
   );
@@ -64,8 +67,8 @@ const styles = StyleSheet.create({
   botao: {
     width: 200,
     height: 40,
-    backgroundColor: "#000",
-    color: "#fff",
+    backgroundColor: "#fcba03",
+    color: "#fcba03",
     borderRadius: 5,
   },
   resultado: {
