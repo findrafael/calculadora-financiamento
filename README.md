@@ -1,26 +1,57 @@
-# Project Name
+**Calculadora Financeira**
 
-A brief description of what this project does and who it's for
+Este projeto é uma calculadora financeira que calcula o valor das parcelas de um financiamento, dado o valor a ser financiado, a taxa de juros % a.m e o período em meses.
 
-## Table of Contents
+**Instalação**
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+Para instalar o projeto, siga os seguintes passos:
 
-## Installation
+1. Clone o repositório:
 
-Describe how to install and set up the project, including any dependencies that need to be installed.
+```
+git clone https://github.com/findrafael/calculadora-financiamento.git
+```
 
-## Usage
+2. Instale as dependências:
 
-Provide instructions on how to use the project, including any relevant code snippets or examples.
+```
+npm install
+```
 
-## Contributing
+**Configuração**
 
-Explain how others can contribute to the project, including guidelines for submitting pull requests and reporting issues.
+Para configurar o projeto, siga os seguintes passos:
 
-## License
+1. (Opcional) Configure o ambiente de desenvolvimento:
 
-Include information about the project's license and any relevant copyright information.
+* Para desenvolvimento Android, execute o comando:
+
+```
+npm run android
+```
+
+* Para desenvolvimento iOS, execute o comando:
+
+```
+npm run ios
+```
+
+* Para desenvolvimento web, execute o comando:
+
+```
+npm run web
+```
+
+**Uso**
+
+Para usar a calculadora financeira, siga os seguintes passos:
+
+1. Abra o projeto em seu dispositivo ou navegador.
+2. Insira o valor a ser financiado, a taxa de juros % a.m e o período em meses.
+3. Clique no botão "Calcular".
+
+**Créditos**
+
+* Como calcular o valor das parcelas de um financiamento - Flávio Moita: https://youtu.be/R95aO52m1-g?si=7yuAuw8g6AYXWq21
+* Expo: https://expo.dev/
+* React Native: https://reactnative.dev/
