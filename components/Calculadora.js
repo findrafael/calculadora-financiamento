@@ -1,98 +1,57 @@
-// components/Calculadora.js
-
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
+import styles from "./calculadora_styles.js";
+import calculadora_utils from "./calculadora_utils.js";
 
 const Calculadora = () => {
-  const [valorInicial, setValorInicial] = useState("");
-  const [taxaJuros, setTaxaJuros] = useState("");
-  const [periodoMeses, setPeriodoMeses] = useState("");
-  const [resultado, setResultado] = useState("");
-  const [valorJuros, setValorJuros] = useState("");
+  const [valorInicial, onChangeValorInicial] = useState("");
+  const [taxaJuros, onChangeTaxaJuros] = useState("");
+  const [periodoMeses, onChangePM] = useState("");
+  const [resultado, onChangeResultado] = useState("");
 
-  const calcular = () => {
-
-    const taxaJurosDecimal = parseInt(taxaJuros) / 100;
-    const auxiliar1 = ((1 + taxaJurosDecimal) ** periodoMeses) * taxaJurosDecimal;
-    const auxiliar2 = ((1 + taxaJurosDecimal) ** periodoMeses) - 1;
-    const parcela = ((valorInicial * auxiliar1) / auxiliar2).toFixed(2);
-
-    const valorJuros = ((parcela * periodoMeses) - valorInicial).toFixed(2);
-
-    if(isNaN(parcela)) {
-      setResultado(">>> Erro ao calcular, verifique! <<<");
-      setValorJuros(">>> Erro ao calcular, verifique! <<<");
-    } else {
-      setResultado(parcela);
-      setValorJuros(valorJuros);
-    }
-
-  };
+  const chamaCalcular = () => {
+    const resultado = calculadora_utils(valorInicial, taxaJuros, periodoMeses);
+    onChangeResultado(resultado);
+  }
 
   return (
+
     <View style={styles.container}>
+
       <Text style={styles.titulo}>Calculadora Financeira</Text>
       <Text></Text>
+
       <TextInput
         style={styles.input}
         placeholder="Valor a ser financiado"
-        keyboardType="numeric"
-        onChangeText={(text) => setValorInicial(text)}
+        inputMode="numeric"
+        onChangeText={onChangeValorInicial}
       />
+
       <TextInput
         style={styles.input}
         placeholder="Taxa de Juros x% a.m."
-        keyboardType="numeric"
-        onChangeText={(text) => setTaxaJuros(text)}
+        inputMode="numeric"
+        onChangeText={(text) => onChangeTaxaJuros(text)}
       />
+
       <TextInput
         style={styles.input}
         placeholder="Período em meses"
-        keyboardType="numeric"
-        onChangeText={(text) => setPeriodoMeses(text)}
+        inputMode="numeric"
+        onChangeText={(text) => onChangePM(text)}
       />
-      <Button
-        title="Calcular"
-        onPress={calcular}
-        style={styles.botao}
-      />
-      <Text style={styles.resultado}>O valor da sua parcela, será de:</Text>
+
+      <Pressable
+        style={styles.pressable}
+        onPress={chamaCalcular}>
+        <Text style={styles.texto_press}>Calcular</Text>
+      </Pressable>
+
       <Text style={styles.resultado}>{resultado}</Text>
-      <Text style={styles.resultado}>O valor dos juros, será de:</Text>
-      <Text style={styles.resultado}>{valorJuros}</Text>
     </View>
+
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor:"#fff",
-  },
-  titulo: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  input: {
-    width: 200,
-    height: 40,
-    borderColor: "#000",
-    borderWidth: 1,
-    padding: 10,
-  },
-  botao: {
-    width: 200,
-    height: 40,
-    backgroundColor: "#fcba03",
-    color: "#fcba03",
-    borderRadius: 5,
-  },
-  resultado: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});
 
 export default Calculadora;
